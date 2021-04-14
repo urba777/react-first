@@ -31,7 +31,7 @@ const App = () => { // <---- pagrindinis komponentas
           <div className='space TARPAS'></div> 
           <HocsUniversalus />
         </div>
-        <h1>Gallery with HOCs (Getting data from server) (Homework)</h1>
+        <h1>Gallery with HOC (Getting data from server) (Homework)</h1>
         <GalleryHocs />
         <h1>Get data from server, JSON (Classwork)</h1>
         <UsersPosts />
