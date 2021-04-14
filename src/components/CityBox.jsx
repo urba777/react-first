@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-//HOCS UNIVERSALAUS KOMPONENTAS
 const CityBox = ({ list }) => {
 
 
