@@ -25,7 +25,7 @@ const App = () => { // <---- pagrindinis komponentas
   return (
     <div className="App">
       <header className="App-header">
-        <h1>HOC ir HOC Universal (Classwork)</h1>
+        <h1>HOC and HOC Universal (Classwork)</h1>
         <div className='inlineBox'>
           <Hocs />
           <div className='space TARPAS'></div> 
