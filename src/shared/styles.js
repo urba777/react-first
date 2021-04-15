@@ -5,5 +5,5 @@ export const fancyStyle = {
 
 export const normalStyle = {
     fontSize: '100%',
-    color: 'white'
+    color: 'lightgreen'
 }

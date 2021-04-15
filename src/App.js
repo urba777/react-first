@@ -19,12 +19,15 @@ import UsersPosts from './components/UsersPosts';
 import Hocs from './components/Hocs';
 import GalleryHocs from './components/GalleryHocs';
 import HocsUniversalus from './components/HocsUniversalus';
+import CarBox from './components/CarBox';
 
 
 const App = () => { // <---- pagrindinis komponentas
   return (
     <div className="App">
       <header className="App-header">
+        <h1>useReducer (Classwork)</h1>
+        <CarBox boxStyle={normalStyle}/>
         <h1>HOC simple and HOC Universal (Classwork)</h1>
         <h2 style={{ fontSize: 12 }}>Conditional rendering kitaip, jeigu atlieka keli žmonės skirtingai darbus<br></br>Jeigu yra masyvas, nera, arba tuscias</h2>
         <div className='inlineBox'>
