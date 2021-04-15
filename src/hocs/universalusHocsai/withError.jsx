@@ -11,10 +11,10 @@ import ErrorComponent from "../../components/ErrorComponent";
 
 //maziau aiskesne sitankse 
 //tokia pati kaip virsuje, tik kitaip parasyta:
-const withError = (Component) => ({errorColor, ...props}) => //errorColor sunaudojamas sicia i ErrorComponent ir toliau nekeliauja
+const withError = (checkFunction) => (Component) => ({errorColor, ...props}) => //errorColor sunaudojamas sicia i ErrorComponent ir toliau nekeliauja
     //ir returniname atsakyma priklausomai nuo ar yra list ar jo nera                                        |
-    !props.list //                                                                                           |
-        ? <ErrorComponent color={errorColor}/> //<---------------------------------------------------------------
+    checkFunction(props) //Tikrina kuris atkeliave is withCompose checkCityListError ar kitas checkZooListError              |
+        ? <ErrorComponent color={errorColor}/> //<------------------------------------------------------------
         : <Component {...props} /> //cia keliauja tik ...props, errorColor nepersiduoda
 
 export default withError;

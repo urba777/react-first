@@ -13,14 +13,22 @@ import ZooBox2 from "../../components/ZooBox2";
 
 // export default withCompose(ZooBox); //isexportiname funkcijos rezultata su tuo komponentu, kuri norime modifikuoti
 
+
+const checkZooListEmpty = (props) => !props.zooList.length;
+const checkCityListEmpty = (props) => !props.cityList.length;
+const checkZooListError = (props) => !props.zooList;
+const checkCityListError = (props) => !props.cityList;
+// |                |                  |
+// |                |                  |
+// V                V                  V
 export const ZooBoxWithCompose = compose(
-    withError, //pirmoje vietoje
-    withEmpty
+    withError(checkZooListError), //pirmoje vietoje
+    withEmpty(checkZooListEmpty)
 )(ZooBox2);
 
 export const CityBoxWithCompose = compose(
-    withError, //pirmoje vietoje
-    withEmpty
+    withError(checkCityListError), //pirmoje vietoje
+    withEmpty(checkCityListEmpty)
 )(CityBox);
 
 

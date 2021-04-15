@@ -43,9 +43,9 @@ const HocsUniversalus = () => {
 
     return (
         <>
-            <ZooBoxWithCompose list={zooList} errorColor={'red'} emptyColor={'orange'} />
+            <ZooBoxWithCompose zooList={zooList} errorColor={'red'} emptyColor={'orange'} />
             <div className='tarpas'></div> 
-            <CityBoxWithCompose list={cityList} errorColor={'red'} emptyColor={'orange'} />
+            <CityBoxWithCompose cityList={cityList} errorColor={'red'} emptyColor={'orange'} />
         </>
     )
 

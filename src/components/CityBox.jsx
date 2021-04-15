@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-const CityBox = ({ list }) => {
+const CityBox = ({ cityList, listColor }) => {
 
 
     useEffect(() => {
@@ -14,11 +14,11 @@ const CityBox = ({ list }) => {
                     <th>Country</th>
                     <th>Name</th>
                 </tr>
-                {list.map(city =>
+                {cityList.map(city =>
                     <tr key={city.id}>
                         <td>{city.id}</td>
                         <td>{city.country}</td>
-                        <td>{city.name}</td>
+                        <td style={{color: listColor}}>{city.name}</td>
                     </tr>
                 )}
             </table>

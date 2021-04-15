@@ -1,8 +1,8 @@
 import EmptyComponent from "../../components/EmptyComponent";
 
-const withEmpty = (Component) => ({emptyColor, ...props}) => 
+const withEmpty = (checkFunction) => (Component) => ({emptyColor, ...props}) => 
     //ir returniname atsakyma priklausomai ar tuscias masyvas ar ne
-    !props.list.length
+    checkFunction(props)  //Tikrina kuris atkeliave is withCompose checkCityListEmpty ar kitas
         ? <EmptyComponent emptyColor={emptyColor}/>
         : <Component {...props} />
 

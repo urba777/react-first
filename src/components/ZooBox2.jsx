@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const ZooBox2 = ({ list }) => { //propsas is HocsUniversalus
+const ZooBox2 = ({ zooList, listColor }) => { //propsas is HocsUniversalus
 
 
     useEffect(() => {
@@ -14,10 +14,10 @@ const ZooBox2 = ({ list }) => { //propsas is HocsUniversalus
                     <th>ID</th>
                     <th>Name</th>
                 </tr>
-                {list.map(animal =>
+                {zooList.map(animal =>
                     <tr key={animal.id}>
                         <td>{animal.id}</td>
-                        <td>{animal.name}</td>
+                        <td style={{color: listColor}}>{animal.name}</td>
                     </tr>
                 )}
             </table>

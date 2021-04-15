@@ -25,13 +25,14 @@ const App = () => { // <---- pagrindinis komponentas
   return (
     <div className="App">
       <header className="App-header">
-        <h1>HOC and HOC Universal (Classwork)</h1>
+        <h1>HOC simple and HOC Universal (Classwork)</h1>
+        <h2 style={{ fontSize: 12 }}>Conditional rendering kitaip, jeigu atlieka keli žmonės skirtingai darbus<br></br>Jeigu yra masyvas, nera, arba tuscias</h2>
         <div className='inlineBox'>
           <Hocs />
-          <div className='space TARPAS'></div> 
+          <div className='space TARPAS'></div>
           <HocsUniversalus />
         </div>
-        <h1>Gallery with HOC (Getting data from server) (Homework)</h1>
+        <h1>Gallery with HOC(Loading) (Getting data from server) (Homework)</h1>
         <GalleryHocs />
         <h1>Get data from server, JSON (Classwork)</h1>
         <UsersPosts />
@@ -40,7 +41,7 @@ const App = () => { // <---- pagrindinis komponentas
         <h1>HOOKS Effect, useEffect (Classwork)</h1>
         <Effect vardas1={'Jonas'} vardas2={'Gretute'} /> {/* FOKUSAS SU PROPSAIS DESTYTOJO*/}
         <h1>HOOKS State, useState (Classwork)</h1>
-        <Message /> 
+        <Message />
         <h1>Game with Sliders (Homework) HOOK'ed</h1>
         <GameBoxSliders />
         <h1>Composition (Classwork) HOOK'ed</h1>
