@@ -1,6 +1,6 @@
 const GalleryLoading = () => {
     return (
-      <p style={{color: 'green'}}>LOADING GALLERY</p>
+      <p style={{color: 'green'}}>LOADING GALLERY HAHA</p>
     );
   };
 
