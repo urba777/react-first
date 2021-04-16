@@ -44,16 +44,16 @@
 import initCars from "../shared/cars";
 import { useReducer } from "react"; //useReducer
 import carReducer from "../reducers/carReducer";
-import { DECREASE, INCREASE, MAKE_BLACK, MAKE_BROWN } from "../constants"; //Konstantos
+import { CHANGE_BRAND, DECREASE, INCREASE, MAKE_BLACK, MAKE_BROWN } from "../constants"; //Konstantos
 
 const CarBox = ({ boxStyle }) => {
 
     const [cars, dispatch] = useReducer(carReducer, initCars); //kai initCars pirma karta pasileis, jis uzpildys cars
     //carReducer - reducers folderyje
-
+    //dispatch - susijes su carReducer, tai onClick perkels i ta f-cija ir pakeis viska
     return (
         <>
-            <table style={{ width: 500 }}>
+            <table style={{ width: 800 }}>
                 <tr>
                     <th>ID</th>
                     <th>Brand</th>
@@ -64,10 +64,12 @@ const CarBox = ({ boxStyle }) => {
                     <tr key={car.id}>
                         <td>{car.id}</td>
                         <td style={boxStyle}>{car.brand}</td>
-                        <td style={{ color: car.color, fontWeight: 'bold', textTransform: 'uppercase' }}>{car.color}</td>
+                        <td style={{ color: car.color, fontWeight: 'bold', textTransform: 'uppercase', backgroundColor: car.color }}></td>
                         <td>
                             <button onClick={() => dispatch({type: MAKE_BLACK, payload: {id: car.id}})}>Make Black</button> {/* DISPATCHinam carReducer skirta objekta, isdispatchinam action objekta*/}
                             <button onClick={() => dispatch({type: MAKE_BROWN, payload: {id: car.id}})}>Make Brown</button> {/* DISPATCHinam carReducer skirta objekta, isdispatchinam action objekta*/}
+                            <input type='text' onChange={(event) => dispatch({ type: CHANGE_BRAND, payload: {id: car.id, brand: event.target.value}})} value={car.brand}></input>
+                            <button>Set Brand</button>
                         </td>
                     </tr>
                 )}
