@@ -42,15 +42,28 @@
 ///REACT KODAS  <--------------------------------------------------------------------------------- useReducer
 
 import initCars from "../shared/cars";
-import { useReducer } from "react"; //useReducer
+import { useEffect, useReducer } from "react"; //useReducer
 import carReducer from "../reducers/carReducer";
-import { CHANGE_BRAND, DECREASE, INCREASE, MAKE_BLACK, MAKE_BROWN } from "../constants"; //Konstantos
+import { INIT_CARS, CHANGE_BRAND, DECREASE, INCREASE, MAKE_BLACK, MAKE_BROWN, SAVE_BRAND } from "../constants"; //Konstantos
 
 const CarBox = ({ boxStyle }) => {
 
+    //cars yra "../shared/cars" - MASYVAS PAGR IS KUR TRAUKIAMI AUTOMOBILIAI
     const [cars, dispatch] = useReducer(carReducer, initCars); //kai initCars pirma karta pasileis, jis uzpildys cars
     //carReducer - reducers folderyje
     //dispatch - susijes su carReducer, tai onClick perkels i ta f-cija ir pakeis viska
+
+
+
+    //#1 - kiti numeriai eiliskumo carReducer'yje
+    //naujas BRAND ipushinam newBrand i masyva. Sita f-cija iskart suveikia uzsikrovus puslapiui, kadangi iskvieciama viena karta []
+    useEffect(() => {
+        dispatch({ type: INIT_CARS, payload: { newMakerInit: 'Please enter new brand'} });
+    }, []);
+
+
+
+
     return (
         <>
             <table style={{ width: 800 }}>
@@ -65,11 +78,11 @@ const CarBox = ({ boxStyle }) => {
                         <td>{car.id}</td>
                         <td style={boxStyle}>{car.brand}</td>
                         <td style={{ color: car.color, fontWeight: 'bold', textTransform: 'uppercase', backgroundColor: car.color }}></td>
-                        <td>
-                            <button onClick={() => dispatch({type: MAKE_BLACK, payload: {id: car.id}})}>Make Black</button> {/* DISPATCHinam carReducer skirta objekta, isdispatchinam action objekta*/}
-                            <button onClick={() => dispatch({type: MAKE_BROWN, payload: {id: car.id}})}>Make Brown</button> {/* DISPATCHinam carReducer skirta objekta, isdispatchinam action objekta*/}
-                            <input type='text' onChange={(event) => dispatch({ type: CHANGE_BRAND, payload: {id: car.id, brand: event.target.value}})} value={car.brand}></input>
-                            <button>Set Brand</button>
+                        <td className='inlineBox'>
+                            <button onClick={() => dispatch({ type: MAKE_BLACK, payload: { id: car.id } })}>Make Black</button> {/* DISPATCHinam carReducer skirta objekta, isdispatchinam action objekta*/}
+                            <button onClick={() => dispatch({ type: MAKE_BROWN, payload: { id: car.id } })}>Make Brown</button> {/* DISPATCHinam carReducer skirta objekta, isdispatchinam action objekta*/}
+                            <input type='text' onChange={(event) => dispatch({ type: CHANGE_BRAND, payload: { id: car.id, brand: event.target.value } })} value={car.newBrand}></input>
+                            <button onClick={() => dispatch({ type: SAVE_BRAND, payload: { id: car.id } })}>Set Brand</button>
                         </td>
                     </tr>
                 )}

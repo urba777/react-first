@@ -2,27 +2,27 @@ const cars = [
     {
         id: 7,
         brand: 'Honda',
-        color: 'gray'
+        color: 'gray',
     },
     {
         id: 37,
         brand: 'BMW',
-        color: 'black'
+        color: 'black',
     },
     {
         id: 73,
         brand: 'Chrysler',
-        color: 'gray'
+        color: 'gray',
     },
     {
         id: 77,
         brand: 'Mercedes',
-        color: 'blue'
+        color: 'blue',
     },
     {
         id: 9,
         brand: 'Opel',
-        color: 'white'
+        color: 'white',
     }
 ];
 
