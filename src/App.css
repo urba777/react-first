@@ -7,6 +7,19 @@
     width: 70%;
 }
 
+.localStorage {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 300px;
+}
+
+.localStorage button {
+    width: 169px;
+    white-space: nowrap;
+    margin: auto;
+}
+
 .space {
     width: 50px;
 }

@@ -36,7 +36,7 @@ const UsersPosts = () => {
             })
             .catch(error => {
                 setUserErrorState('Error while getting user information');
-                console.log('Error status: ' + error.response.status);
+                //console.log('Error status: ' + error.response.status);
             })
 
         API.get('posts')

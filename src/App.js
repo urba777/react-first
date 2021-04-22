@@ -26,8 +26,9 @@ const App = () => { // <---- pagrindinis komponentas
   return (
     <div className="App">
       <header className="App-header">
-        <h1>useReducer (Classwork)</h1>
-        <CarBox boxStyle={normalStyle}/>
+        <h1>useContext (Classwork)</h1>
+        <h1>useReducer (Classwork) + Local Storage</h1>
+        <CarBox boxStyle={normalStyle} />
         <h1>HOC simple and HOC Universal (Classwork)</h1>
         <h2 style={{ fontSize: 12 }}>Conditional rendering kitaip, jeigu atlieka keli žmonės skirtingai darbus<br></br>Jeigu yra masyvas, nera, arba tuscias</h2>
         <div className='inlineBox'>
