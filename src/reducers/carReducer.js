@@ -1,5 +1,6 @@
 /* 
-//SENO KODO ISVAIZDA
+//SENO KODO ISVAIZDA be localStorage
+
 case MAKE_BROWN:
             return state.map(car => {
                 if (car.id === action.payload.id) {

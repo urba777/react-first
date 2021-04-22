@@ -63,7 +63,7 @@ const CarBox = ({ boxStyle }) => {
         dispatch({ type: INIT_CARS, payload: { newMakerInit: 'Please enter new brand' } });
 
         //Jeigu kazkas nutinka su localStorage ir update'inasi ne tame paciame, o kitame tab'e (langelyje narsykles)
-        //Skirtas tarp TABų sužaisti
+        //Skirtas tarp TABų sužaisti (localStorage)
         window.addEventListener('storage', () => {
             console.log('STORAGE EVENT' + JSON.parse(window.localStorage.getItem('history')));
         });
@@ -103,15 +103,15 @@ const CarBox = ({ boxStyle }) => {
 
     useEffect(() => {
 
-        if (alreadyMounted.current) {//antras jau veiksmas ir toliau
+        if (alreadyMounted.current) {//antras jau veiksmas ir toliau (localStorage)
 
             let history = JSON.parse(localStorage.history);
 
             if (cars.history === 'new') {
-                //issaugome history
+                //issaugome history (localStorage)
                 history.unshift(cars);
             } else if (cars.history === 'old'){
-                //isimame history
+                //isimame history (localStorage)
                 history.shift();
             }
 
@@ -121,7 +121,7 @@ const CarBox = ({ boxStyle }) => {
             alreadyMounted.current = true;
         }
 
-    }, [cars]); //pasikeitus cars suveiks
+    }, [cars]); //pasikeitus cars suveiks (localStorage)
 
     const doSomething = () => {
         setNumber(number => number + 1);
