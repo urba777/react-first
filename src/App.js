@@ -21,14 +21,18 @@ import GalleryHocs from './components/GalleryHocs';
 import HocsUniversalus from './components/HocsUniversalus';
 import CarBox from './components/CarBox';
 import ButtonColor from './contexts/ButtonColor';
-import { useContext } from 'react';
+import { createRef, useContext } from 'react';
+import UseRefBox from './components/UseRefBox';
 
 
 const App = () => { // <---- pagrindinis komponentas
   const bttColor = useContext(ButtonColor);
+  const ref = createRef(); //vaikinam perduosim reference
   return (
     <div className="App">
       <header className="App-header">
+        <h1>useRef (Classwork)</h1>
+        <UseRefBox number={1} ref={ref}/>
         <h1>useReducer (Classwork) + Local Storage <h1>+ useContext (propsu perdavimas is tevo tiesiogiai proanūkiui)</h1></h1>
         <ButtonColor.Provider value={bttColor}> {/* <-- useContext */}
           <CarBox boxStyle={normalStyle} />
