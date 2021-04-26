@@ -1,0 +1,52 @@
+Naujienų srautas
+
+
+neveikia /api/news/1/50   gražina info nuo 1 iki 50 prekės
+neveikia /api/news/51/100 gražina info nuo 51 iki 100 prekės
+https://in3.dev/vinted/api/news
+
+{
+    [{id: 89995412}, {id: 89997412}] produkto id sąrašas
+}
+
+
+https://in3.dev/vinted/api/products/id  info apie produktą
+
+{
+    img: ['url1', 'url2', 'url3'],  nuo 0 iki 10 foto linkų
+    main_img: 2 pagrindinės nuotraukos indeksas masyve  
+    price: 15.55
+    size: ['XXl','42','18'] masyvas su kategorijų sąrašu
+    brand: 48 prekės ženklo id
+    user: 4788 userio id
+    likes: [54654,46546,8979879877,6546465] // userių padėjusių savo laiką ids
+    hearts: 45
+}
+
+neveikia /api/hearts/add/id padidėja širdučių skaičius produktui su id
+
+{
+    'count': 45
+}
+
+
+https://in3.dev/vinted/api/users/id info apie userį
+
+{
+    id: 5465465
+    avatar: 'url'
+    name: 'pingvinė'
+}
+
+https://in3.dev/vinted/api/brands/id info apie brandą
+
+{
+    id: 5465465
+    name: 'Dolčė ir Gabanė'
+}
+
+https://in3.dev/vinted/api/brands/all visas galimas brandų sąrašas
+
+{
+    [{id: 5465465, name: 'Dolčė ir Gabanė'}, {id: 5447465, name: 'Adidas'}]
+}

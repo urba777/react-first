@@ -42,12 +42,14 @@
 ///REACT KODAS  <--------------------------------------------------------------------------------- useReducer
 
 import initCars from "../shared/cars";
-import { useEffect, useReducer, useState, useRef } from "react"; //useReducer
+import { useEffect, useReducer, useState, useRef, useContext } from "react"; //useReducer
 import carReducer from "../reducers/carReducer";
 import { INIT_CARS, CHANGE_BRAND, DECREASE, INCREASE, MAKE_BLACK, MAKE_BROWN, SAVE_BRAND, ROLL_BACK } from "../constants"; //Konstantos
+import ButtonColor from '../contexts/ButtonColor'; //useContext
 
 const CarBox = ({ boxStyle }) => {
-
+    //useContext
+    const bttColor = useContext(ButtonColor);
     //cars yra "../shared/cars" - MASYVAS PAGR IS KUR TRAUKIAMI AUTOMOBILIAI
     const [cars, dispatch] = useReducer(carReducer, initCars); //kai initCars pirma karta pasileis, jis uzpildys cars
     const [number, setNumber] = useState(0);
@@ -110,7 +112,7 @@ const CarBox = ({ boxStyle }) => {
             if (cars.history === 'new') {
                 //issaugome history (localStorage)
                 history.unshift(cars);
-            } else if (cars.history === 'old'){
+            } else if (cars.history === 'old') {
                 //isimame history (localStorage)
                 history.shift();
             }
@@ -150,7 +152,11 @@ const CarBox = ({ boxStyle }) => {
                     <button onClick={doSomething}>{show}</button>
                     {showLocalStorage()}
                     <h1>HISTORY:</h1>
-                    <button onClick={() => dispatch({ type: ROLL_BACK })}>ROLL BACK</button>
+                    {/* <ButtonColor.Consumer> {value => (
+                        <button style={{ backgroundColor: value }} onClick={() => dispatch({ type: ROLL_BACK })}>ROLL BACK</button>
+                    )}
+                    </ButtonColor.Consumer>  */}
+                    <button style={{ backgroundColor: bttColor }} onClick={() => dispatch({ type: ROLL_BACK })}>ROLL BACK</button>
                 </div>
                 <tr>
                     <th>ID</th>
