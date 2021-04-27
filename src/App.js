@@ -23,16 +23,22 @@ import CarBox from './components/CarBox';
 import ButtonColor from './contexts/ButtonColor';
 import { createRef, useContext } from 'react';
 import UseRefBox from './components/UseRefBox';
+import AppBoxCall from './components/AppBoxCall';
+import MemoBox from './components/MemoBox';
 
 
 const App = () => { // <---- pagrindinis komponentas
   const bttColor = useContext(ButtonColor);
-  const ref = createRef(); //vaikinam perduosim reference
+  const ref = createRef(); //vaikiniam perduosim reference (UseRefBox komponentui)
   return (
     <div className="App">
       <header className="App-header">
+        <h1>memo (Classwork) OPTIMIZAVIMAS</h1>
+        <MemoBox />
+        <h1>useCallback (Classwork) OPTIMIZAVIMAS</h1>
+        <AppBoxCall boxStyle={normalStyle} />
         <h1>useRef (Classwork)</h1>
-        <UseRefBox number={1} ref={ref}/>
+        <UseRefBox number={1} ref={ref} />
         <h1>useReducer (Classwork) + Local Storage <h1>+ useContext (propsu perdavimas is tevo tiesiogiai proanūkiui)</h1></h1>
         <ButtonColor.Provider value={bttColor}> {/* <-- useContext */}
           <CarBox boxStyle={normalStyle} />
