@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: honeydew;
+    min-height: 100vh;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+li {
+    list-style: none;
+    width: 25%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 10px;
+}
+
+li .content {
+    border: 1px solid greenyellow;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 250px;
+    align-items: center;
+    padding: 10px;
+}
+
+li .content .bookAuthor {
+    font-style: italic;
+    color: pink;
+    font-size: 10px;
+    padding-bottom: 8px;
+}
+
+li .content .bookPrice{
+    font-size: 19px;
+    color: seagreen;
+    font-weight: bold;
+}
+
+li .content .cat{
+    font-size: 14px;
+    color: steelblue;
+    text-align: right;
+    padding: 0 15px;
+    width: 100%;
+}
+
+li .content img {
+    max-width: 70px;
+    height: auto;
+    min-height: 110px;
+    width: 100%;
+}
+
+li .content .bookTitle {
+    font-size: 14px;
+    overflow: hidden;
+    text-align: center;
+    height: 40px;
+    line-height: 20px;
+    width: 100%;
+    color: lightslategray;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.App-header {
+    background-color: lavender;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: lightcoral;
+    font-size: 200%;
+}
+
+.loadingImg {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+
+
+
+
+
