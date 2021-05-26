@@ -1,23 +1,15 @@
-import { useContext } from "react";
-import Types from "../contexts/Types";
+import BookType from "./BookType";
 
-const Book = ({ book, types }) => {
-
-    // const types = useContext(Types);
-    let type = 'LOADING';
-    const getType = types.filter(type => type.id === book.type);
-    if (getType.length) {
-        type = getType[0].title;
-    }
+const Book = ({ book }) => { //types hook uzrasyti, jeigu naudojame hooka o ne provider
 
     return (
         <li>
             <div className='content'>
                 <div className='bookTitle'>{book.title}</div>
                 <div className='bookAuthor'>{book.author}</div>
-                <img src={book.img}></img>
+                <img src={book.img} alt={book.title}></img>
                 <div className='bookPrice'>{book.price} &euro;</div>
-                <div className='cat'>{type}</div>
+                <BookType bookType={book.type}/>
             </div>
         </li>
     );

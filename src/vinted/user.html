@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="scripts/registerLogin.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Vinted</title>
+</head>
+
+<body>
+
+    <div class="regLogPopUp" id="regLog">
+        <div class="regLogBox">
+            <div class="closeOnRight">
+                <div></div>
+                <div onclick="closeRegLog()" class="popUpClose"><img src="images/x-icon.svg"></div>
+            </div>
+            <h1>Prisijunk prie Vinted</h1>
+            <p>Parduok nebereikalingas prekes už savo kainą. Pradėk šiandien!</p>
+            <div class="popUpButtons">
+                <a href="register.html">Registruotis</a>
+                <a href="login.html">Prisijungti</a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="header">
+        <div class="headerMain">
+            <a href="index.html"><img src="images/vinted.svg"></a>
+            <div class="headerSearch">
+                <form>
+                    <button class="searchButton">
+                        <span>Prekės</span>
+                        <span>
+                            <span class="searchArrow">
+                                <img src="images/b-arrow-down-icon.svg">
+                            </span>
+                        </span>
+                    </button>
+                    <div class="searchInputMain">
+                        <img src="images/search.svg">
+                        <input class="searchInput" type="text" placeholder="Ieškoti prekių">
+                    </div>
+                </form>
+            </div>
+            <div class="rightButtons">
+                <span onclick='openRegLog()' class="loginRegister">Registruotis | Prisijungti</span>
+                <span class="sellNow">Parduok dabar</span>
+            </div>
+        </div>
+        <div class="spaceBetweenHeaders"></div>
+        <div class="headerBottom">
+            <a href="#">Moterims</a>
+            <a href="#">Vyrams</a>
+            <a href="#">Vaikams</a>
+            <a href="#">Namams</a>
+            <a href="#">Apie mus</a>
+        </div>
+    </nav>
+
+    <div class="userInformation">
+        <div class="userInformationBoxes">
+            <div class="profilePhotoBox">
+                <img class="profilePhoto" src="images/users/user.jpeg">
+            </div>
+            <div class="profileInfo">
+                <div class="profileNameLikeMessage">
+                    <div class="usernameStarsReviews">
+                        <h1>mrBean</h1>
+                        <div class="stars">
+                            <img src="images/star-icon-selected.svg">
+                            <img src="images/star-icon-selected.svg">
+                            <img src="images/star-icon-selected.svg">
+                            <img src="images/star-icon.svg">
+                            <img src="images/star-icon.svg">
+                            <h6>1690 atsiliepimai</h6>
+                        </div>
+                    </div>
+                    <div class="messageLike">
+                        <a class="loginRegister prvtMessage" href="#">Žinutė</a>
+                        <a class="sellNow likeProfile" href="#">Mėgti</a>
+                    </div>
+                </div>
+                <div class="aboutConfirmed">
+                    <div class="aboutProfile">
+                        <h6>Apie</h6>
+                        <ul>
+                            <li><img class="profileSvg" src="images/location-icon.svg">Lietuva</li>
+                            <li><img class="profileSvg" src="images/clock-icon.svg">Jungėsi prieš 2 valandas</li>
+                            <li>
+                                <img class="profileSvg" src="images/connection.svg"><span>403&nbsp;</span>
+                                Sekėjai,<span>&nbsp;248&nbsp;</span> Mėgsta
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="aboutProfile aboutProfileleftSide">
+                        <h6>Patvirtinta informacija:</h6>
+                        <ul>
+                            <li><img class="profileSvg" src="images/confirmed.svg">El. paštas</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="aboutConfirmed">
+                    <p>Rūbus parduodu mažai dėvėtus, arba visai nesivilktus. Visi tikri defektai iškeliauja ten, kur
+                        jiems ir vieta...
+                        Pasimatuoti ir apžiūrėti nesiunčiu.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="salesList">
+        <div class="saleBox">
+            <img class="saleImageMain" src="images/clothes/1clothe.jpg">
+            <div class="saleInfo">
+                <div class="flexCenterSpaceBetween">
+                    <h3 class="price">8,00 &euro;</h3>
+                    <div class="flexCenterSpaceBetween likeAndNumberOfLikes">
+                        <img src="images/like.svg">
+                        <h6>7</h6>
+                    </div>
+                </div>
+                <h6 class="sizeAndBrand">S / 36 / 8</h6>
+                <h6 class="sizeAndBrand">H&M</h6>
+            </div>
+        </div>
+        <div class="saleBox">
+            <img class="saleImageMain" src="images/clothes/2clothe.jpg">
+            <div class="saleInfo">
+                <div class="flexCenterSpaceBetween">
+                    <h3 class="price">8,00 &euro;</h3>
+                    <div class="flexCenterSpaceBetween likeAndNumberOfLikes">
+                        <img src="images/like.svg">
+                        <h6>7</h6>
+                    </div>
+                </div>
+                <h6 class="sizeAndBrand">S / 36 / 8</h6>
+                <h6 class="sizeAndBrand">H&M</h6>
+            </div>
+        </div>
+        <div class="saleBox">
+            <img class="saleImageMain" src="images/clothes/3clothe.jpg">
+            <div class="saleInfo">
+                <div class="flexCenterSpaceBetween">
+                    <h3 class="price">8,00 &euro;</h3>
+                    <div class="flexCenterSpaceBetween likeAndNumberOfLikes">
+                        <img src="images/like.svg">
+                        <h6>7</h6>
+                    </div>
+                </div>
+                <h6 class="sizeAndBrand">S / 36 / 8</h6>
+                <h6 class="sizeAndBrand">H&M</h6>
+            </div>
+        </div>
+        <div class="saleBox">
+            <img class="saleImageMain" src="images/clothes/4clothe.jpg">
+            <div class="saleInfo">
+                <div class="flexCenterSpaceBetween">
+                    <h3 class="price">8,00 &euro;</h3>
+                    <div class="flexCenterSpaceBetween likeAndNumberOfLikes">
+                        <img src="images/like.svg">
+                        <h6>7</h6>
+                    </div>
+                </div>
+                <h6 class="sizeAndBrand">S / 36 / 8</h6>
+                <h6 class="sizeAndBrand">H&M</h6>
+            </div>
+        </div>
+        <div class="saleBox">
+            <img class="saleImageMain" src="images/clothes/5clothe.jpg">
+            <div class="saleInfo">
+                <div class="flexCenterSpaceBetween">
+                    <h3 class="price">8,00 &euro;</h3>
+                    <div class="flexCenterSpaceBetween likeAndNumberOfLikes">
+                        <img src="images/like.svg">
+                        <h6>7</h6>
+                    </div>
+                </div>
+                <h6 class="sizeAndBrand">S / 36 / 8</h6>
+                <h6 class="sizeAndBrand">H&M</h6>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

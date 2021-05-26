@@ -1,0 +1,4 @@
+export const SORT_PRICE_UP = 'SORT_PRICE_UP';
+export const SORT_PRICE_DOWN = 'SORT_PRICE_DOWN';
+export const GET_BOOKS_FROM_SERVER = "GET_BOOKS_FROM_SERVER";
+export const RANDOM = "RANDOM";

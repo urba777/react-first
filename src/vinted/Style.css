@@ -1,0 +1,564 @@
+body, html, * {
+    padding: 0;
+    margin: 0;
+    font-family: "Maison Neue", "Helvetica Neue", "Helvetica-Neue", "Arial", sans-serif;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+.popUpClose {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    right: 0px;
+    background-color: rgba(17, 17, 17, 0.3);
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.popUpClose:hover {
+    background-color: rgba(17, 17, 17, 0.2);
+}
+
+.popUpClose img {
+    width: 10.63px;
+    height: 16px;
+    margin: auto;
+    fill: #fff;
+}
+
+.closeOnRight {
+    display: flex;
+    justify-content: space-between;
+}
+
+.regLogPopUp {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100011;
+}
+
+.regLogBox {
+    padding: 16px;
+    box-sizing: border-box;
+    background-color: #fff;
+    width: 340px;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 10px 25px rgb(17 17 17 / 50%);
+    border-radius: 3px;
+}
+
+.regLogBox h1 {
+    font-size: 24px;
+    text-align: center;
+    font-weight: 100;
+    margin-bottom: 24px;
+}
+
+.regLogBox p {
+    color: #666;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.popUpButtons {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.popUpButtons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    white-space: nowrap;
+    font-size: 16px;
+    width: 131.05px;
+    height: 42px;
+    text-transform: none;
+    color: #000;
+}
+
+.popUpButtons a:hover {
+    background-color: rgba(17, 17, 17, 0.02);
+}
+
+.headerBottom a:hover {
+    background-color: rgba(153,153,153,0.05);
+}
+
+.header {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    z-index: 100010;
+    width: 100%;
+    background: #fff;
+}
+
+.headerMain {
+    max-width: 1240px;
+    margin: auto;
+    width: 90%;
+    height: 52px;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headerSearch {
+    max-width: 704px;
+    background-color: #f5f6f7;
+    width: 90%;
+    border-radius: 4px;
+    padding: 0;
+    min-height: 36px;
+}
+
+.headerSearch form {
+    display: flex;
+}
+
+.searchButton {
+    background-color: #f5f6f7;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+    height: 36px;
+    padding: 0 11px;
+    color: #999;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-right: 1px rgba(153,153,153,0.5) solid;
+}
+
+.searchArrow {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    top: 3px;
+}
+
+.searchArrow img {
+    width: 18px;
+    height: auto;
+    fill: #999;
+}
+
+.searchInputMain {
+    display: flex;
+}
+
+.searchInputMain img {
+    width: 20px;
+    height: auto;
+    padding: 5px;
+}
+
+.searchInput {
+    font-size: 16px;
+    line-height: 20px;
+    color: #111;
+    font-weight: 400;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    width: 100%;
+    font-family: inherit;
+    background-color: transparent;
+    border: 0;
+}
+
+input:focus {
+    outline: none;
+}
+
+.rightButtons {
+    display: flex;
+    align-items: center;
+    color: #09b1ba;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    height: 28px;
+}
+
+.loginRegister {
+    padding: 6px 8px 6px 8px;
+    border: 1px #09b1ba solid;
+    border-radius: 4px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.sellNow {
+    background-color:  #09b1ba;
+    color: #fff;
+    padding: 6px 8px 6px 8px;
+    border: 1px #09b1ba solid;
+    border-radius: 4px;
+}
+
+.spaceBetweenHeaders {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(153,153,153,0.5);
+}
+
+.headerBottom {
+    max-width: 1240px;
+    margin: auto;
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+
+.headerBottom a {
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #999;
+    text-decoration: none;
+}
+
+/* NAV END */
+
+.firstSection {
+    background-image: url(images/vintedBg.jpeg);
+    background-size: cover;
+    background-position: center;
+}
+
+.firstSectionWrapper {
+    max-width: 1240px;
+    width: 90%;
+    margin: auto;
+}
+
+.firstSectionBoxWrapper {
+    padding: 136px 0px 136px 0px;
+}
+
+.firstSectionBox {
+    width: 400px;
+    height: 300px;
+    box-shadow: 0px 0px 2px rgb(17 17 17 / 24%);
+    background: #fff;
+    border-radius: 3px;
+    padding: 32px;
+    box-sizing: border-box;
+}
+
+.firstSectionBox h1 {
+    font-size: 35px;
+    font-weight: 300;
+    color: #111;
+    /* padding-bottom: 32px; */
+}
+
+.sellButton button {
+    margin-top: 32px;
+    height: 44px;
+    font-size: 16px;
+    padding: 0 14px;
+    background-color: #09b1ba;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.howToButton {
+    font-size: 14px;
+    position: relative;
+    top: 16px;
+    color: #09b1ba;
+}
+
+.howToButton:hover {
+    text-decoration: underline;
+}
+
+.salesList {
+    padding-top: 20px;
+    max-width: 1280px;
+    margin: auto;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.saleBox {
+    height: 461.25px;
+    padding-top: 0px;
+    padding-right: 8px;
+    padding-bottom: 16px;
+    padding-left: 8px;
+    max-width: 235px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+.user .userAvatar {
+    width: 24px;
+    height: auto;
+    border-radius: 3996px;
+    margin-right: 8px;
+}
+
+.user h6 {
+    font-size: 12px;
+    line-height: 22px;
+    color: #666;
+    font-weight: 400;
+}
+
+.saleImageMain {
+    max-width: 235px;
+    width: 100%;
+    height: 355px;
+}
+
+.saleInfo {
+    padding: 8px;
+}
+
+.flexCenterSpaceBetween {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.likeAndNumberOfLikes img {
+    width: 16px;
+    height: auto;
+}
+
+.likeAndNumberOfLikes h6 {
+    font-size: 12px;
+    color: #999;
+}
+
+.sizeAndBrand {
+    color: #999;
+    font-weight: 100;
+}
+
+/* USER PAGE */
+.userInformationBoxes { 
+    padding-top: 20px;
+    max-width: 1240px;
+    width: 90%;
+    margin: auto;
+    display: flex;
+}
+
+.profilePhotoBox {
+    vertical-align: top;
+    max-width: 192px;
+    width: 100%;
+    margin-right: 16px;
+}
+
+.profilePhoto {
+    max-width: 192px;
+    width: 100%;
+    height: 192px;
+    border-radius: 50%;
+}
+
+.profileInfo {
+    max-width: 1032px;
+    width: 100%;
+}
+
+.profileNameLikeMessage {
+    box-sizing: border-box;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.usernameStarsReviews h1{
+    font-size: 24px;
+    font-weight: 100;
+}
+
+.stars {
+    display: flex;
+}
+
+.stars img {
+    width: 18px;
+    height: 18px;
+}
+
+.stars h6 {
+    margin-left: 8px;
+    font-size: 16px;
+    font-weight: 100;
+    line-height: 22px;
+    color: #666;
+}
+
+.prvtMessage {
+    font-size: 14px;
+    color: #09b1ba;
+    height: 36px;
+    padding: 9px 11px;
+}
+
+.likeProfile {
+    font-size: 14px;
+    height: 36px;
+    padding: 9px 11px;
+}
+
+.aboutConfirmed {
+    padding: 16px;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.aboutProfile h6 {
+    font-size: 12px;
+    font-weight: 100;
+    color: #999;
+    margin-bottom: 4px;
+} 
+
+.aboutProfile ul {
+    list-style-type: none;
+    color: #666;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.aboutProfile ul li {
+    display: flex;
+    align-items: baseline;
+}
+
+.aboutProfile ul li span{
+    color: #09b1ba;
+}
+
+.profileSvg {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+.aboutConfirmed p {
+    color: #666;
+    font-size: 16px;
+    max-width: 770px;
+    line-height: 22px;
+}
+
+.aboutProfileleftSide {
+    margin-left: 65px;
+}
+
+.registerForm {
+    padding-top: 32px;
+}
+
+.registerForm form {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.registerForm form h1 {
+    text-align: center;
+    font-weight: 100;
+    padding: 16px;
+    font-size: 24px;
+}
+
+.registerForm form .inputDiv {
+    padding: 16px;
+}
+
+.registerForm form input {
+    color: #666;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #ebedee;
+    font-size: 16px;
+    width: 100%;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  border-bottom: 1px solid #ebedee;
+  outline: none;
+  font-size: 16px;
+  color: #666;
+  -webkit-text-fill-color: #666;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.registerForm form p {
+    padding: 16px;
+    font-size: 12px;
+    color: #999;
+}
+
+.registerForm form button {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500;
+    height: 44px;
+    padding: 0 14px;
+    background-color: #09b1ba;
+    border-radius: 4px;
+    border: 1px solid #09b1ba;
+    color: #fff;
+    cursor: pointer;
+}

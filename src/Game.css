@@ -1,0 +1,342 @@
+.App {
+    text-align: center;
+}
+
+#root > div > header > div.carousel-root > div > div > ul > li> div > img {
+    height: 622px;
+    width: 70%;
+}
+
+.localStorage {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 300px;
+}
+
+.localStorage button {
+    width: 169px;
+    white-space: nowrap;
+    margin: auto;
+}
+
+.space {
+    width: 50px;
+}
+
+.tarpas {
+    width: 20px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel .slide .legend {
+    transition: all .5s ease-in-out;
+    position: absolute;
+    left: 50%;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    opacity: 0.25;
+    transition: opacity .35s ease-in-out;
+    background-color: rgba(255, 255, 255, 0.0);
+    background: rgba(255, 255, 255, 0.0);
+}
+
+
+#root > div > header > div.carousel-root {
+    height: 682px;
+    margin: auto;
+    width: 80%;
+    background: rgba(0, 0, 0, 1);
+}
+
+#root > div > header > div.carousel-root > div {
+    height: 682px; 
+}
+
+#root > div > header > div.carousel-root > div > div > ul > li.slide.selected > div > p {
+    font-size: 18px;
+}
+
+
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+
+table, tr, td, th {
+    border: 1px solid #fff;
+}
+
+th {
+    padding: 5px;
+}
+
+table {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-collapse: collapse;
+    font-size: 16px;
+}
+
+.boxGame {
+    display:flex;
+    justify-content: space-between;
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+}
+
+.ball {
+    position: relative;
+    width: 50px;
+    height: 50px;  
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.basket {
+    position: relative;
+    width: 60px;
+    height: 60px;  
+    border-radius: 50%;
+    border: 1px solid #fff;
+    z-index: 0;
+}
+
+.score {
+    font-size: 24px;
+}
+
+.ballBox {
+    margin-right: 20px;
+}
+
+.sliders {
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inlineBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 16px;
+}
+
+.africa {
+    font-size: 12px;
+}
+
+.mirrorBox {
+    text-align: center;
+    width: 500px;
+    height: 283px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 200px;
+    padding: 15px;
+    position: relative;
+    top: -19px;
+}
+
+form.box {
+    width: 500px;
+    height: 280px;
+    border: 1px solid black;
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    min-height: 200px;
+    padding: 15px;
+}
+
+.slider-box span {
+    font-size: 20px;
+}
+
+.slider-box {
+    padding: 20px 0 20px 0;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    flex-direction: column;
+}
+
+form {
+    font-size: 16px;
+    text-align: left;
+}
+
+.box input,
+.box select {
+    width: 90%;
+    height: 25px;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+.box .textArea {
+    width: 90%;
+    height: 100px;
+    font-size: 16px;
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.box {
+    box-sizing: border-box;
+    padding: 15px;
+    width: 200px;
+    height: auto;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+    margin-bottom: 50px;
+}
+
+.countbox {
+    width: 350px;
+    height: 350px;
+    border: 3px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+    margin-bottom: 50px;
+}
+
+
+.countbox h1{
+    font-size: 50px;
+}
+
+.inline {
+    display: flex;
+    align-items: center;
+}
+
+.myButton {
+    background-color: green;
+    border-radius: 28px;
+    border: none;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    /* font-family: Arial; */
+    font-size: 17px;
+    padding: 16px 31px;
+    margin-top: 15px;
+    text-decoration: none;
+    outline: none;
+    margin: auto;
+}
+
+.myButton:active {
+    position: relative;
+    top: 1px;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.color-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.cash {
+    white-space: nowrap;
+    width: 411px;
+    margin: auto;
+    background-color: rgba(228, 5, 180, 0.5);
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0px 15px;
+    -webkit-box-shadow: 0px 3px 0px 2px rgba(0,0,0,0.1), 0px 6px 0px 4px rgba(0,0,0,0.1), 0px 9px 0px 6px rgba(0,0,0,0.1), 0px 12px 0px 8px rgba(0,0,0,0.1), 0px 15px 0px 10px rgba(0,0,0,0.1), 0px 18px 0px 12px rgba(0,0,0,0.1), 0px 21px 0px 14px rgba(0,0,0,0.1), 0px 24px 0px 16px rgba(0,0,0,0.1), 0px 27px 0px 18px rgba(0,0,0,0.1), 0px 30px 0px 20px rgba(0,0,0,0.1), -44px -32px 17px -15px rgba(0,0,0,0); 
+    box-shadow: 0px 3px 0px 2px rgba(0,0,0,0.1), 0px 6px 0px 4px rgba(0,0,0,0.1), 0px 9px 0px 6px rgba(0,0,0,0.1), 0px 12px 0px 8px rgba(0,0,0,0.1), 0px 15px 0px 10px rgba(0,0,0,0.1), 0px 18px 0px 12px rgba(0,0,0,0.1), 0px 21px 0px 14px rgba(0,0,0,0.1), 0px 24px 0px 16px rgba(0,0,0,0.1), 0px 27px 0px 18px rgba(0,0,0,0.1), 0px 30px 0px 20px rgba(0,0,0,0.1), -44px -32px 17px -15px rgba(0,0,0,0);
+}
+
+.alignCenter {
+    width: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.alignCenter .plusOneButton {
+    position: inherit;
+    margin-left: -22px;
+    margin-top: 14px;
+    FONT-SIZE: 24px;
+}
+
+.euroImg {
+    width: 45px;
+    height: 45px;
+}
+
+.alignCenter:active {
+    transform: scale(0.9);
+}
+
+.money {
+    font-size: 35px;
+}
+
+.title {
+    font-size: 34px;
+    width: 100px;
+    color: rgba(322, 420, 3770, 0.5);
+}

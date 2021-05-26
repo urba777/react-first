@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="scripts/registerLogin.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Vinted</title>
+</head>
+
+<body>
+
+    <div class="regLogPopUp" id="regLog">
+        <div class="regLogBox">
+            <div class="closeOnRight">
+                <div></div>
+                <div onclick="closeRegLog()" class="popUpClose"><img src="images/x-icon.svg"></div>
+            </div>
+            <h1>Prisijunk prie Vinted</h1>
+            <p>Parduok nebereikalingas prekes už savo kainą. Pradėk šiandien!</p>
+            <div class="popUpButtons">
+                <a href="register.html">Registruotis</a>
+                <a href="login.html">Prisijungti</a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="header">
+        <div class="headerMain">
+            <a href="index.html"><img src="images/vinted.svg"></a>
+            <div class="headerSearch">
+                <form>
+                    <button class="searchButton">
+                        <span>Prekės</span>
+                        <span>
+                            <span class="searchArrow">
+                                <img src="images/b-arrow-down-icon.svg">
+                            </span>
+                        </span>
+                    </button>
+                    <div class="searchInputMain">
+                        <img src="images/search.svg">
+                        <input class="searchInput" type="text" placeholder="Ieškoti prekių">
+                    </div>
+                </form>
+            </div>
+            <div class="rightButtons">
+                <span onclick='openRegLog()' class="loginRegister">Registruotis | Prisijungti</span>
+                <span class="sellNow">Parduok dabar</span>
+            </div>
+        </div>
+        <div class="spaceBetweenHeaders"></div>
+        <div class="headerBottom">
+            <a href="#">Moterims</a>
+            <a href="#">Vyrams</a>
+            <a href="#">Vaikams</a>
+            <a href="#">Namams</a>
+            <a href="#">Apie mus</a>
+        </div>
+    </nav>
+
+    <div class="registerForm">
+        <form>
+            <h1>Registruotis</h1>
+            <div class="inputDiv">
+                <input placeholder="Vartotojo vardas" type="text">
+            </div>
+            <div class="inputDiv">
+                <input placeholder="El.pašto adresas" type="email">
+            </div>
+            <div class="inputDiv">
+                <input placeholder="Slaptažodis" type="password">
+            </div>
+            <p>Užsiregistruodamas patvirtinu, kad sutinku su VInted taisyklėmis, perskaičiau privatumo politika ir man
+                yra ne mažiau kaip 18 metų.</p>
+            <button class="registerButton" type="submit">Registruotis</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
