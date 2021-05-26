@@ -33,8 +33,14 @@ li .content {
     justify-content: flex-start;
     flex-direction: column;
     height: 250px;
+    width: 100%;
     align-items: center;
     padding: 10px;
+}
+
+main {
+  display: block;
+  width: 100%;
 }
 
 li .content .bookAuthor {
@@ -104,7 +110,8 @@ li .content .bookTitle {
   border: firebrick 1px solid;
 }
 
-.buttonsHolder button.sortButton {
+.buttonsHolder button.sortButton,
+.buttonsHolder button.filterButton {
   background-color: firebrick;
   border: none;
   display: inline-block;
@@ -119,6 +126,21 @@ li .content .bookTitle {
 
 .buttonsHolder button.sortButton:hover {
   background-color: rgb(218,42,42);
+}
+
+.selectorBox {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.selectorBox select {
+  height: 30px;
+  border: firebrick 1px solid;
+  box-sizing: border-box;
+  outline: none;
+  background-color: firebrick;
+  color: #fff;
+  padding: 0 5px;
 }
 
 /*                                                      LOADING                                                */
