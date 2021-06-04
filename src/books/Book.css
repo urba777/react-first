@@ -104,6 +104,11 @@ li .content .bookTitle {
     font-size: 200%;
 }
 
+.App-header > span {
+  display: inline-block;
+  margin: 0 10px;
+}
+
 .buttonsHolder {
   padding: 10px;
   margin: 10px;
@@ -207,7 +212,21 @@ li .content .bookTitle {
   }
 /*                                                     END OF LOADING                                                */
 
+.pager {
+  display: flex;
+  justify-content: center;
+}
 
+.pager span {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 20px;
+  color: indianred;
+}
+
+.pager span a {
+  color: rebeccapurple;
+}
 
 
 

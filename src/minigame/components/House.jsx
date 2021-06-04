@@ -24,7 +24,7 @@ const House = props => {
     return (
         <div className='box'>
             <h1>{props.name}. Kaina: {props.price}</h1>
-            <h1>Duoda pelno: {props.gives} &euro;/s</h1>
+            <h1>{props.makes}: {props.gives}/s</h1>
             <h1>Viso pastatų: {props.sum}</h1>
             <h1>Sukauptas pelnas: {pelnas()}</h1>
             <button onClick={props.buyAppartment} style={{ backgroundColor: bgColor }} className='myButton'>BUY</button>
