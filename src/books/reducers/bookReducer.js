@@ -10,11 +10,11 @@ const bookReducer = (state, action) => {
                 return {
                     showBooks: state.allBooks.filter(book => book.type === action.payload.value),
                     allBooks: state.allBooks,
-                    activePage: state.activePage
+                    activePage: 1
                 }
             } else if (action.payload.value === 0) { //jeigu nepasirinktos selecte knygos - grazina visas knygas
                 return {
-                    showBooks: state.allBooks.slice(0, action.payload.itemsPerPage),
+                    showBooks: [].concat(state.allBooks).slice(0, action.payload.itemsPerPage),
                     allBooks: state.allBooks,
                     activePage: 1 
                 }

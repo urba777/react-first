@@ -6,7 +6,7 @@ import withEmptyPage from "../hocs/withEmptyPage";
 const BooksPagerPage = ({ handlePageSelect, page, activePage }) => {
 
     return (
-        <span onClick={() => handlePageSelect(page)}><a>{page}</a></span>
+        <span onClick={() => handlePageSelect(page)}><a href='#'>{page}</a></span>
     )
 }
 

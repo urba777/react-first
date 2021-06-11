@@ -1,45 +1,32 @@
 //KNYGYNAS
-import { useContext, useEffect, useReducer, useState } from 'react';
+import { useContext, useEffect, useReducer, useRef, useState } from 'react';
 import './books/Book.css';
-import './vinted/Style.css';
 import BookPager from './books/components/BookPager';
 import BooksList from './books/components/BooksList';
 import BooksTypeSelector from './books/components/BooksTypeSelector';
-import VintedList from './books/components/VintedList';
-import { GET_BOOKS_FROM_SERVER, SORT_PRICE_DOWN, SORT_PRICE_UP, RANDOM, SELECTED_BOOKS_FILTER, CHANGE_ITEMS_PER_PAGE, SET_ACTIVE_PAGE, GET_NEWS_FROM_SERVER } from './books/constants';
+import { GET_BOOKS_FROM_SERVER, SORT_PRICE_DOWN, SORT_PRICE_UP, RANDOM, SELECTED_BOOKS_FILTER, CHANGE_ITEMS_PER_PAGE, SET_ACTIVE_PAGE } from './books/constants';
 import Types from './books/contexts/Types';
 import bookReducer from './books/reducers/bookReducer';
-import vintedReducer from './books/reducers/vintedReducer';
 import API from './books/shared/booksAPI';
-import API2 from './vinted/shared/productsAPI';
 
 const App = () => {
 
   //vinted
-  const [errorProducts, setErrorProducts] = useState(''); //error, jeigu nera knygu
-  const [vinted, vintedDispatch] = useReducer(vintedReducer, { news: [], products: [] });
-
-  //vinted atvaizdavimui
-  useEffect(() => {
-    API2.get('news/')
-      .then(response => {
-        vintedDispatch({ type: GET_NEWS_FROM_SERVER, payload: response.data })
-      })
-      .catch(error => {
-        setErrorProducts('Error while getting products list');
-      })
-  }, []);
+  
 
   //books
   const [books, booksDispatch] = useReducer(bookReducer, { showBooks: [], allBooks: [], activePage: 1 }); //tai, kas yra rodoma // showBooks: rodomos knygos, allBooks: visos knygos
   //puslapyje rodomu knygu skaicius (puslapiavimas)
-  const [itemsPerPage] = useState(1); //viename puslapyje va tiek knygu 
+  const [itemsPerPage, setItemsPerPage] = useState(1); //viename puslapyje va tiek knygu 
+  // const [activePage, setActivePage] = useState(1); //aktyvus puslapis, perdedame i bookReducer
 
   //select'ui
   const [typeSelectValue, setTypeSelectValue] = useState(0); //filtravimui nustato valuem aktyvus filtras pagal tipa
+  // const [allBooks, setAllBooks] = useState([]); // visu knygu sarasas, filtravimui, kad butu state nesikeiciantis per Reduceri, sukuriamas sitas, o paskui per useEffect i reduceri
 
   //perduoti tipus (visu tipu sarasas)
   const [types, setTypes] = useState(useContext(Types));
+  //const types = useContext(Types); //desime i localStorage knygu tipus
   const [errorBooks, setErrorBooks] = useState(''); //error, jeigu nera knygu
 
   //categories, types list (tipu sarasas) + localStorage
@@ -57,6 +44,20 @@ const App = () => {
         .catch(error => { })
     }
   }, []);
+
+  // //book list
+  // useEffect(() => {
+  //   console.log('START BOOKS');
+
+  //   API.get('')
+  //     .then(response => {
+  //       console.log(response.data);
+  //       setAllBooks(response.data); //idedu iskart i state visas knygas
+  //     })
+  //     .catch(error => {
+  //       setErrorBooks('Error while getting book list');
+  //     })
+  // }, []);
 
   //knygu atvaizdavimui
   useEffect(() => {
@@ -78,13 +79,25 @@ const App = () => {
 
   //nustato pasirinkta puslapi (puslapiavimas)
   const handlePageSelect = activePage => {
+    // setActivePage(activePage);
     console.log(activePage);
-    booksDispatch({ type: SET_ACTIVE_PAGE, payload: { activePage: activePage, itemsPerPage: itemsPerPage } });
+    booksDispatch({ type: SET_ACTIVE_PAGE, payload: { activePage: activePage, itemsPerPage: itemsPerPage} });
   }
   useEffect(() => {
     booksDispatch({ type: CHANGE_ITEMS_PER_PAGE, payload: { itemsPerPage: itemsPerPage } });
   }, [itemsPerPage]); //itraukiam i sarasiuka, jeigu kazkas pakeistu kazkuri, iskart persirendirentu
   //***END OF PAGING ^^^ */
+
+  //Mygtukai SORT - paprastai, be REDUCER
+  // const doSortPriceUp = () => {
+  //   const sorted = [].concat(books).sort((a, b) => a.price > b.price ? 1 : -1); //concat - sulipina du masyvus. Pirmas []. - neturime, tai tuscias
+  //   setBooks(sorted);
+  // }
+
+  // const doSortPriceDown = () => {
+  //   const sorted = [].concat(books).sort((a, b) => a.price < b.price ? 1 : -1); //concat - sulipina du masyvus. Pirmas []. - neturime, tai tuscias
+  //   setBooks(sorted);
+  // }
 
   return (
     <div className="App">
@@ -104,10 +117,6 @@ const App = () => {
           <BookPager activePage={books.activePage} handlePageSelect={handlePageSelect} itemsPerPage={itemsPerPage} showedItemsCount={books.showBooks.length} allItemsCount={books.allBooks.length} />
         </main>
       </Types.Provider>
-
-      <main>
-        <VintedList vintedDispatch={vintedDispatch} errorProducts={errorProducts} vinted={vinted} />
-      </main>
       <footer>
 
       </footer>
