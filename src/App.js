@@ -6,12 +6,20 @@ import BookPager from './books/components/BookPager';
 import BooksList from './books/components/BooksList';
 import BooksTypeSelector from './books/components/BooksTypeSelector';
 import VintedList from './books/components/VintedList';
+
 import { GET_BOOKS_FROM_SERVER, SORT_PRICE_DOWN, SORT_PRICE_UP, RANDOM, SELECTED_BOOKS_FILTER, CHANGE_ITEMS_PER_PAGE, SET_ACTIVE_PAGE, GET_NEWS_FROM_SERVER } from './books/constants';
+
 import Types from './books/contexts/Types';
+
 import bookReducer from './books/reducers/bookReducer';
 import vintedReducer from './books/reducers/vintedReducer';
+
 import API from './books/shared/booksAPI';
 import API2 from './vinted/shared/productsAPI';
+
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import VintedProductPage from './books/components/VintedProductPage';
+import History from './books/components/History';
 
 const App = () => {
 
@@ -41,6 +49,7 @@ const App = () => {
   //perduoti tipus (visu tipu sarasas)
   const [types, setTypes] = useState(useContext(Types));
   const [errorBooks, setErrorBooks] = useState(''); //error, jeigu nera knygu
+
 
   //categories, types list (tipu sarasas) + localStorage
   useEffect(() => {
@@ -88,29 +97,75 @@ const App = () => {
 
   return (
     <div className="App">
-      <Types.Provider value={types}>
-        <header className="App-header">
-          <span>Books Store</span>
-          <div className="buttonsHolder">
-            <BooksTypeSelector handleTypeSelect={handleTypeSelect} typeSelectValue={typeSelectValue} />
-            <button className="filterButton">Apply filter</button> {/* onClick={() => doSortPriceUp() BE REDUCER */}
-            <button className="sortButton" onClick={() => booksDispatch({ type: SORT_PRICE_UP, payload: { itemsPerPage: itemsPerPage } })}>Sort by price UP</button> {/* onClick={() => doSortPriceUp() BE REDUCER */}
-            <button className="sortButton" onClick={() => booksDispatch({ type: SORT_PRICE_DOWN, payload: { itemsPerPage: itemsPerPage } })}>Sort by price DOWN</button> {/* onClick={() => doSortPriceUp() BE REDUCER */}
-            <button className="sortButton" onClick={() => booksDispatch({ type: RANDOM, payload: { itemsPerPage: itemsPerPage } })}>RANDOM</button>
-          </div>
-        </header>
-        <main>
-          <BooksList errorBooks={errorBooks} books={books.showBooks} />
-          <BookPager activePage={books.activePage} handlePageSelect={handlePageSelect} itemsPerPage={itemsPerPage} showedItemsCount={books.showBooks.length} allItemsCount={books.allBooks.length} />
-        </main>
-      </Types.Provider>
+      <Router>
+        <Types.Provider value={types}>
+          <header className="App-header">
+            <Link to='/'>
+              <span>Home</span>
+            </Link>
+            <Link to='/books-store'>
+              <span>Books Store</span>
+            </Link>
+            <Link to='/vinted-news'>
+              <span>Vinted news</span>
+            </Link>
 
-      <main>
-        <VintedList vintedDispatch={vintedDispatch} errorProducts={errorProducts} vinted={vinted} />
-      </main>
-      <footer>
+            <Switch> {/* VIDEO 2021.05.05 01:27:00 sustabdo komponentu kitu rendinima, kai suranda pirma atitikima. GALIMA NAUDOTI BE SWITCH! */}
+              <Route exact path='/books-store'>
+                <div className="buttonsHolder">
+                  <BooksTypeSelector handleTypeSelect={handleTypeSelect} typeSelectValue={typeSelectValue} />
+                  <button className="filterButton">Apply filter</button> {/* onClick={() => doSortPriceUp() BE REDUCER */}
+                  <button className="sortButton" onClick={() => booksDispatch({ type: SORT_PRICE_UP, payload: { itemsPerPage: itemsPerPage } })}>Sort by price UP</button> {/* onClick={() => doSortPriceUp() BE REDUCER */}
+                  <button className="sortButton" onClick={() => booksDispatch({ type: SORT_PRICE_DOWN, payload: { itemsPerPage: itemsPerPage } })}>Sort by price DOWN</button> {/* onClick={() => doSortPriceUp() BE REDUCER */}
+                  <button className="sortButton" onClick={() => booksDispatch({ type: RANDOM, payload: { itemsPerPage: itemsPerPage } })}>RANDOM</button>
+                </div>
+              </Route>
+            </Switch>
+            {/* useHistory VIDEO 2021.05.05 01:44:00 */}
+            <History></History>
+          </header>
 
-      </footer>
+          <Switch>
+
+            <Route exact path='/books-store'> {/* exact nurodo tiksliai puslapi, kad po / (slesho) niekas neveiktu */}
+              <main>
+                <BooksList errorBooks={errorBooks} books={books.showBooks} />
+                <BookPager activePage={books.activePage} handlePageSelect={handlePageSelect} itemsPerPage={itemsPerPage} showedItemsCount={books.showBooks.length} allItemsCount={books.allBooks.length} />
+              </main>
+            </Route>
+
+
+
+            <Route exact path='/vinted-news'> {/* exact nurodo tiksliai puslapi, kad po / (slesho) niekas neveiktu */}
+              <main>
+                <VintedList vintedDispatch={vintedDispatch} errorProducts={errorProducts} vinted={vinted} />
+              </main>
+            </Route>
+
+            <Route exact path='/product/:id'> {/* su parametru id parodysime tik viena norima preke su useParams() */}
+              <main>
+                <VintedProductPage vinted={vinted} />
+              </main>
+            </Route>
+
+            <Route exact path='/'> {/* exact nurodo tiksliai puslapi, kad po / (slesho) niekas neveiktu */}
+              <main>
+                <h3 style={{ textAlign: 'center' }}>Select page</h3> {/* rodo kaip main-page */}
+              </main>
+            </Route>
+
+            <Route path='*'> {/* cia gali buti bet kas bet tik su SWITCH*/}
+              <main>
+                <h3 style={{ textAlign: 'center' }}>404 PAGE NOT FOUND</h3> {/* jei nebus atitikmens, ismes sita */}
+              </main>
+            </Route>
+
+          </Switch>
+          <footer>
+
+          </footer>
+        </Types.Provider>
+      </Router>
     </div>
 
   );
