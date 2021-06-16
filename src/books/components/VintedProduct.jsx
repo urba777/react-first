@@ -17,8 +17,8 @@ const VintedProduct = ({ productId, vintedDispatch, vinted }) => {
     }, [productId]);
 
     if (vinted.products.filter(product => product.id === productId).length) {
-        const product = vinted.products.filter(product => product.id === productId)[0]; //kad eitu parodyti info, kuri su news ID ir produkto ID susiję
-        console.log('produktas', product)
+        const product = vinted.products.filter(product => product.id === productId)[0]; //kad eitu parodyti info, kuri su news ID ir produkto ID susiję (surisimas skirtingu json'u)
+        // console.log('produktas', product)
         return (
             <div className="saleBox">
                 <a href="#">

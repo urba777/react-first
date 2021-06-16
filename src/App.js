@@ -16,7 +16,7 @@ import API2 from './vinted/shared/productsAPI';
 const App = () => {
 
   //vinted
-  const [errorProducts, setErrorProducts] = useState(''); //error, jeigu nera knygu
+  const [errorProducts, setErrorProducts] = useState(''); //error, jeigu nera produktu
   const [vinted, vintedDispatch] = useReducer(vintedReducer, { news: [], products: [] });
 
   //vinted atvaizdavimui
