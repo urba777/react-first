@@ -1,4 +1,4 @@
-import { SORT_PRICE_UP, SORT_PRICE_DOWN, GET_BOOKS_FROM_SERVER, RANDOM, SELECTED_BOOKS_FILTER, CHANGE_ITEMS_PER_PAGE, SET_ACTIVE_PAGE } from '../constants';
+import { SORT_PRICE_UP, SORT_PRICE_DOWN, GET_BOOKS_FROM_SERVER, RANDOM, SELECTED_BOOKS_FILTER, CHANGE_ITEMS_PER_PAGE, SET_ACTIVE_PAGE, UPDATE_BOOKS_FROM_SERVER } from '../constants';
 
 
 const bookReducer = (state, action) => {
@@ -16,7 +16,7 @@ const bookReducer = (state, action) => {
                 return {
                     showBooks: [].concat(state.allBooks).slice(0, action.payload.itemsPerPage),
                     allBooks: state.allBooks,
-                    activePage: 1 
+                    activePage: 1
                 }
             }
             break;
@@ -81,6 +81,13 @@ const bookReducer = (state, action) => {
                 activePage: action.payload.activePage
             }
 
+        //update kai kreipiamasi i serveri kas 10sec patikrinti ar info pasikeite
+        case UPDATE_BOOKS_FROM_SERVER: 
+            const updated = state.allBooks.concat(action.payload.updatedBooks);
+            
+            //atsiranda masyve naujas objektas. reikia overwritinti sena objekta nauju. foreachindami viena masyva ir kita masyva, kai id sutampa
+            // console.log(updated, 'updt')
+            return state;
 
 
         default: return state;

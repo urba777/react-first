@@ -34,7 +34,7 @@ const VintedProduct = ({ productId, vintedDispatch, vinted }) => {
                             <h6>{product.id}</h6>
                         </div>
                     </a>
-                    <Link to={'/product/' + productId}>
+                    <Link to={'/vinted/product/' + productId}>
                         <img className="saleImageMain" src={product.img[product.main_img]}></img>
                     </Link>
                     <div className="saleInfo">

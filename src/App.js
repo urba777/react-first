@@ -7,7 +7,7 @@ import BooksList from './books/components/BooksList';
 import BooksTypeSelector from './books/components/BooksTypeSelector';
 import VintedList from './books/components/VintedList';
 
-import { GET_BOOKS_FROM_SERVER, SORT_PRICE_DOWN, SORT_PRICE_UP, RANDOM, SELECTED_BOOKS_FILTER, CHANGE_ITEMS_PER_PAGE, SET_ACTIVE_PAGE, GET_NEWS_FROM_SERVER } from './books/constants';
+import { GET_BOOKS_FROM_SERVER, SORT_PRICE_DOWN, SORT_PRICE_UP, RANDOM, SELECTED_BOOKS_FILTER, CHANGE_ITEMS_PER_PAGE, SET_ACTIVE_PAGE, GET_NEWS_FROM_SERVER, UPDATE_BOOKS_FROM_SERVER } from './books/constants';
 
 import Types from './books/contexts/Types';
 
@@ -20,6 +20,7 @@ import API2 from './vinted/shared/productsAPI';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import VintedProductPage from './books/components/VintedProductPage';
 import History from './books/components/History';
+import RouterHooks from './books/components/RouterHooks';
 
 const App = () => {
 
@@ -41,7 +42,43 @@ const App = () => {
   //books
   const [books, booksDispatch] = useReducer(bookReducer, { showBooks: [], allBooks: [], activePage: 1 }); //tai, kas yra rodoma // showBooks: rodomos knygos, allBooks: visos knygos
   //puslapyje rodomu knygu skaicius (puslapiavimas)
-  const [itemsPerPage] = useState(1); //viename puslapyje va tiek knygu 
+  const [itemsPerPage] = useState(2); //viename puslapyje va tiek knygu 
+  //
+
+
+  //update TIME (laikas, kada mes esame upsideitine) patikrinimui, ar serveryje pasikeite kokia INFO
+  //VIDEO 2021.05.07 01:05:30
+  const [lastUpdateTime, setLastUpdateTime] = useState(Date.now());
+
+  useEffect(() => {
+    API.post(``, { time: (Math.round(lastUpdateTime / 1000) - 10) })
+      .then(response => {
+        booksDispatch({ type: UPDATE_BOOKS_FROM_SERVER, payload: { updatedBooks: response.data, itemsPerPage: itemsPerPage } });
+      })
+      .catch(error => {})
+    
+  }, [lastUpdateTime]);
+
+  useEffect(() => {
+    const lastUpdateTimerId = setInterval(
+      () => setLastUpdateTime(Date.now()), 10000 //kas 10sec
+    );
+    return function cleanTimer() {
+      clearInterval(lastUpdateTimerId);
+    }
+  }, []);
+
+
+  //Date 
+  const timestamp = Date.now();
+  const date = new Date(timestamp);
+  const fullDate = "Date: " + date.getDate() +
+    "/" + (date.getMonth() + 1) +
+    "/" + date.getFullYear() +
+    " " + date.getHours() +
+    ":" + date.getMinutes() +
+    ":" + date.getSeconds();
+
 
   //select'ui
   const [typeSelectValue, setTypeSelectValue] = useState(0); //filtravimui nustato valuem aktyvus filtras pagal tipa
@@ -82,7 +119,7 @@ const App = () => {
   //filtravimui FILTER FILTER FILTER FILTER FILTER FILTER
   const handleTypeSelect = e => {
     setTypeSelectValue(parseInt(e.target.value));
-    booksDispatch({ type: SELECTED_BOOKS_FILTER, payload: { value: parseInt(e.target.value) } })
+    booksDispatch({ type: SELECTED_BOOKS_FILTER, payload: { value: parseInt(e.target.value), itemsPerPage: itemsPerPage } })
   }
 
   //nustato pasirinkta puslapi (puslapiavimas)
@@ -106,12 +143,12 @@ const App = () => {
             <Link to='/books-store'>
               <span>Books Store</span>
             </Link>
-            <Link to='/vinted-news'>
+            <Link to='/vinted/news'>
               <span>Vinted news</span>
             </Link>
 
             <Switch> {/* VIDEO 2021.05.05 01:27:00 sustabdo komponentu kitu rendinima, kai suranda pirma atitikima. GALIMA NAUDOTI BE SWITCH! */}
-              <Route exact path='/books-store'>
+              <Route path='/books-store'>
                 <div className="buttonsHolder">
                   <BooksTypeSelector handleTypeSelect={handleTypeSelect} typeSelectValue={typeSelectValue} />
                   <button className="filterButton">Apply filter</button> {/* onClick={() => doSortPriceUp() BE REDUCER */}
@@ -121,13 +158,18 @@ const App = () => {
                 </div>
               </Route>
             </Switch>
-            {/* useHistory VIDEO 2021.05.05 01:44:00 */}
-            <History></History>
           </header>
+
+          <main>
+            {/* useHistory VIDEO 2021.05.05 01:44:00 */}
+            {/* <History></History> */}
+            {/* useLocation, useRouteMatch : VIDEO 2021.05.07 */}
+            <RouterHooks />
+          </main>
 
           <Switch>
 
-            <Route exact path='/books-store'> {/* exact nurodo tiksliai puslapi, kad po / (slesho) niekas neveiktu */}
+            <Route path='/books-store'> {/* exact nurodo tiksliai puslapi, kad po / (slesho) niekas neveiktu */}
               <main>
                 <BooksList errorBooks={errorBooks} books={books.showBooks} />
                 <BookPager activePage={books.activePage} handlePageSelect={handlePageSelect} itemsPerPage={itemsPerPage} showedItemsCount={books.showBooks.length} allItemsCount={books.allBooks.length} />
@@ -136,13 +178,13 @@ const App = () => {
 
 
 
-            <Route exact path='/vinted-news'> {/* exact nurodo tiksliai puslapi, kad po / (slesho) niekas neveiktu */}
+            <Route exact path='/vinted/news'> {/* exact nurodo tiksliai puslapi, kad po / (slesho) niekas neveiktu */}
               <main>
                 <VintedList vintedDispatch={vintedDispatch} errorProducts={errorProducts} vinted={vinted} />
               </main>
             </Route>
 
-            <Route exact path='/product/:id'> {/* su parametru id parodysime tik viena norima preke su useParams() */}
+            <Route exact path='/vinted/product/:id'> {/* su parametru id parodysime tik viena norima preke su useParams() */}
               <main>
                 <VintedProductPage vinted={vinted} />
               </main>
@@ -161,8 +203,8 @@ const App = () => {
             </Route>
 
           </Switch>
-          <footer>
-
+          <footer style={{ marginTop: '50px' }}>
+            {fullDate}
           </footer>
         </Types.Provider>
       </Router>
