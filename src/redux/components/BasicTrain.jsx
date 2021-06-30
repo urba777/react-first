@@ -3,7 +3,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 const mapStateToProps = state => {
     return {
-        trains: state.trains
+        //atsiranda trainsReducer del to, kad isskiria musu reducerius. jeigu naudojamas vienas basicReducer, tada trainsReducer istrinti!
+
+        trains: state.trainsReducer.trains
     }
 }
 
@@ -11,7 +13,7 @@ const Trains = ({ trains }) => {
 
     return (
         <ul>
-            {trains.map(train => (<li key={uuidv4()}>{train.type}{train.long}</li>))}
+            {trains.map(vagon => (<li key={uuidv4()}>{vagon.type}{vagon.long}</li>))}
         </ul>
     )
 }

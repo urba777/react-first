@@ -3,7 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 const mapStateToProps = state => {
     return {
-        ships: state.ships
+        //atsiranda shipsReducer del to, kad isskiria musu reducerius. jeigu naudojamas vienas basicReducer, tada shipsReducer istrinti!
+        ships: state.shipsReducer.ships
     }
 }
 

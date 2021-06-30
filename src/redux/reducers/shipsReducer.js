@@ -1,8 +1,8 @@
-import { ADD_SHIP, ADD_TRAIN } from "../constants";
+import { ADD_SHIP } from "../constants";
 
-const initState = { trains: [{ type: 'idk who', long: '100' }], ships: [{ type: 'steam boat', long: '54' }] }; //traukiniai, laivai
+const initState = { ships: [{ type: 'steam boat', long: '58' }] }; //laivai
 
-const basicReducer = (state = initState, action) => {
+const shipsReducer = (state = initState, action) => {
 
     if (action.type === ADD_SHIP) {
         //paaskinimas VIDEO 2021.05.12 00:07:00
@@ -16,11 +16,7 @@ const basicReducer = (state = initState, action) => {
         // }
     }
 
-    else if (action.type === ADD_TRAIN) {
-        return Object.assign({}, state, { trains: state.trains.concat(action.payload) });
-    }
-
     return state;
 }
 
-export default basicReducer;
+export default shipsReducer;
