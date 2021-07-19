@@ -21,7 +21,7 @@ const carReducer = (state, action) => { //TURI KAZKA GRAZINTI !!! //state - cars
                 history: 'new',
                 data: state.data.map(car => {
                     if (car.id === action.payload.id) {
-                        return { ...car, color: 'black' };
+                        return { ...car, color: 'black' }; //pakeicia masyve value
                     } else {
                         return car;
                     }
