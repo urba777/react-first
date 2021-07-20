@@ -11,27 +11,27 @@ const GameHeader = (props) => {
         <div className="topBoxes">
             <div className="resourcesBox">
                 <div className="resource">
-                    <img title='Gold' src={coinImage}></img>
+                    <img alt='Gold' title='Gold' src={coinImage}></img>
                     <span>{props.gold}</span>
                     <div></div>
                 </div>
                 <div className="resource">
-                    <img title='Food' src={foodImage}></img>
+                    <img alt='Food' title='Food' src={foodImage}></img>
                     <span>{props.food}</span>
                     <div></div>
                 </div>
-                <div class="resource">
-                    <img title='Stone' src={stoneImage}></img>
+                <div className="resource">
+                    <img alt='Stone' title='Stone' src={stoneImage}></img>
                     <span>{props.stone}</span>
                     <div></div>
                 </div>
-                <div title='Wood' class="resource">
-                    <img src={woodImage}></img>
+                <div title='Wood' className="resource">
+                    <img alt='Wood' src={woodImage}></img>
                     <span>{props.wood}</span>
                     <div></div>
                 </div>
-                <div title='Workers' class="resource">
-                    <img src={workerImage}></img>
+                <div title='Workers' className="resource">
+                    <img alt='Workers' src={workerImage}></img>
                     <span>{props.workers}</span>
                     <div></div>
                 </div>

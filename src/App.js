@@ -1,12 +1,11 @@
 //VINTED
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './minigame/Style.css';
 import GameHeader from './minigame/components/GameHeader';
 import AllBuildings from './minigame/components/AllBuildings';
 import allBuildings from './minigame/buildings/allBuildings';
 import { useReducer } from 'react';
 import buildingReducer from './minigame/reducers/buildingReducer';
-
 
 const App = () => {
 
@@ -71,8 +70,8 @@ const App = () => {
   useEffect(() => {
     if (buildings[0].level >= 1) {
       const timerID = setInterval(() => {
-        setGold(gold => gold + buildings[0].level);
-      }, 100);
+        setGold(gold => gold + (2 * buildings[0].level));
+      }, 1000);
       return () => clearInterval(timerID);
     }
   }, [buildings]);
@@ -81,8 +80,8 @@ const App = () => {
   useEffect(() => {
     if (buildings[1].level >= 1) {
       const timerID = setInterval(() => {
-        setFood(food => food + buildings[1].level);
-      }, 100);
+        setFood(food => food + (2 * buildings[1].level));
+      }, 1000);
       return () => clearInterval(timerID);
     }
   }, [buildings]);
@@ -91,8 +90,8 @@ const App = () => {
   useEffect(() => {
     if (buildings[2].level >= 1) {
       const timerID = setInterval(() => {
-        setWood(wood => wood + buildings[2].level);
-      }, 100);
+        setWood(wood => wood + (2 * buildings[2].level));
+      }, 1000);
       return () => clearInterval(timerID);
     }
   }, [buildings]);
@@ -101,8 +100,8 @@ const App = () => {
   useEffect(() => {
     if (buildings[3].level >= 1) {
       const timerID = setInterval(() => {
-        setStone(stone => stone + buildings[3].level);
-      }, 100);
+        setStone(stone => stone + (2 * buildings[3].level));
+      }, 1000);
       return () => clearInterval(timerID);
     }
   }, [buildings]);
@@ -131,6 +130,7 @@ const App = () => {
           <Building name={'Medzio dirbtuves'} gives={'2'} earnings={parduotuvesEarnings} sum={parduotuves} price={15} money={money} buyAppartment={buyParduotuve} makes={aboutLumberMill} /> */}
 
       </header>
+
       <main>
         <AllBuildings
           allBuildings={buildings}
@@ -143,8 +143,10 @@ const App = () => {
           setFood={setFood}
           setWood={setWood}
           setStone={setStone}
+          setWorkers={setWorkers}
         />
       </main>
+
       <footer><button onClick={() => setRess()}>SET</button></footer>
     </div>
 
