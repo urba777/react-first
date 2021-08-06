@@ -1,6 +1,7 @@
 {
   "name": "one",
   "version": "0.1.0",
+  "homepage": "http://urba.website/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",

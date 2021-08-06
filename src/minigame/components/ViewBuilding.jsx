@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
 //images ress
 import coinImage from '../images/resources/Coin.png';
 import foodImage from '../images/resources/Bread.png';
 import stoneImage from '../images/resources/Stone.png';
 import woodImage from '../images/resources/Wood.png';
 import workerImage from '../images/resources/worker.png';
-import { useRef } from "react";
+//other
+import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+
 
 
 const ViewBuilding = props => {
@@ -15,82 +16,35 @@ const ViewBuilding = props => {
     const [goldColor, setGoldColor] = useState('white');
     const [stoneColor, setStoneColor] = useState('white');
     const [foodColor, setFoodColor] = useState('white');
-
-    const buildButton = useRef(true);
-
+    const [workersColor, setWorkersColor] = useState('red');
 
     //this shows how much gold you need by the level
     const currentLevelGoldNeeded = () => {
-        if (props.building.shortName === 'gold') {
-            return props.building.goldNeeded[props.building.level];
-        }
-        if (props.building.shortName === 'wood') {
-            return props.building.goldNeeded[props.building.level];
-        }
-        if (props.building.shortName === 'stone') {
-            return props.building.goldNeeded[props.building.level];
-        }
-        if (props.building.shortName === 'food') {
+        if (props.building.shortName === 'gold' || props.building.shortName === 'wood' || props.building.shortName === 'stone' || props.building.shortName === 'food') {
             return props.building.goldNeeded[props.building.level];
         }
     }
     //this shows how much stone you need by the level
     const currentLevelStoneNeeded = () => {
-        if (props.building.shortName === 'gold') {
-            return props.building.stoneNeeded[props.building.level];
-        }
-        if (props.building.shortName === 'wood') {
-            return props.building.stoneNeeded[props.building.level];
-        }
-        if (props.building.shortName === 'stone') {
-            return props.building.stoneNeeded[props.building.level];
-        }
-        if (props.building.shortName === 'food') {
+        if (props.building.shortName === 'gold' || props.building.shortName === 'wood' || props.building.shortName === 'stone' || props.building.shortName === 'food') {
             return props.building.stoneNeeded[props.building.level];
         }
     }
     //this shows how much food you need by the level
     const currentLevelFoodNeeded = () => {
-        if (props.building.shortName === 'gold') {
-            return props.building.foodNeeded[props.building.level];
-        }
-        if (props.building.shortName === 'wood') {
-            return props.building.foodNeeded[props.building.level];
-        }
-        if (props.building.shortName === 'stone') {
-            return props.building.foodNeeded[props.building.level];
-        }
-        if (props.building.shortName === 'food') {
+        if (props.building.shortName === 'gold' || props.building.shortName === 'wood' || props.building.shortName === 'stone' || props.building.shortName === 'food') {
             return props.building.foodNeeded[props.building.level];
         }
     }
     //this shows how much wood you need by the level
     const currentLevelWoodNeeded = () => {
-        if (props.building.shortName === 'gold') {
-            return props.building.woodNeeded[props.building.level];
-        }
-        if (props.building.shortName === 'wood') {
-            return props.building.woodNeeded[props.building.level];
-        }
-        if (props.building.shortName === 'stone') {
-            return props.building.woodNeeded[props.building.level];
-        }
-        if (props.building.shortName === 'food') {
+        if (props.building.shortName === 'gold' || props.building.shortName === 'wood' || props.building.shortName === 'stone' || props.building.shortName === 'food') {
             return props.building.woodNeeded[props.building.level];
         }
     }
     //this shows how many workers you need by the level to build
     const currentLevelWorkersNeeded = () => {
-        if (props.building.shortName === 'gold') {
-            return props.building.workersNeeded[props.building.level];
-        }
-        if (props.building.shortName === 'wood') {
-            return props.building.workersNeeded[props.building.level];
-        }
-        if (props.building.shortName === 'stone') {
-            return props.building.workersNeeded[props.building.level];
-        }
-        if (props.building.shortName === 'food') {
+        if (props.building.shortName === 'gold' || props.building.shortName === 'wood' || props.building.shortName === 'stone' || props.building.shortName === 'food') {
             return props.building.workersNeeded[props.building.level];
         }
     }
@@ -101,27 +55,28 @@ const ViewBuilding = props => {
             setWoodColor('white');
         } else if (props.wood < props.building.woodNeeded[props.building.level]) {
             setWoodColor('red');
-            buildButton.current = false;
         }
         if (props.gold >= props.building.goldNeeded[props.building.level]) {
             setGoldColor('white');
         } else if (props.gold < props.building.goldNeeded[props.building.level]) {
             setGoldColor('red');
-            buildButton.current = false;
         }
         if (props.stone >= props.building.stoneNeeded[props.building.level]) {
             setStoneColor('white');
         } else if (props.stone < props.building.stoneNeeded[props.building.level]) {
             setStoneColor('red');
-            buildButton.current = false;
         }
         if (props.food >= props.building.foodNeeded[props.building.level]) {
             setFoodColor('white');
         } else if (props.food < props.building.foodNeeded[props.building.level]) {
             setFoodColor('red');
-            buildButton.current = false;
         }
-    }, [props.gold, props.wood, props.food, props.stone]);
+        if (props.workers >= props.building.workersNeeded[props.building.level]) {
+            setWorkersColor('white');
+        } else if (props.workers < props.building.workersNeeded[props.building.level]) {
+            setWorkersColor('red');
+        }
+    }, [props.gold, props.wood, props.food, props.stone, props.workers]);
 
     //grayscale filter
     const grayScaleFilter = () => {
@@ -151,7 +106,7 @@ const ViewBuilding = props => {
                     </div>
                     <div className="resourcesNeeded">
                         <img alt='Workers' src={workerImage}></img>
-                        <span style={{ color: 'pink' }}>{currentLevelWorkersNeeded()}</span>
+                        <span style={{ color: workersColor }}>{currentLevelWorkersNeeded()}</span>
                     </div>
                 </>
             )
@@ -173,7 +128,7 @@ const ViewBuilding = props => {
                     </div>
                     <div className="resourcesNeeded">
                         <img alt='Workers' src={workerImage}></img>
-                        <span style={{ color: 'pink' }}>{currentLevelWorkersNeeded()}</span>
+                        <span style={{ color: workersColor }}>{currentLevelWorkersNeeded()}</span>
                     </div>
                 </>
             )
@@ -195,7 +150,7 @@ const ViewBuilding = props => {
                     </div>
                     <div className="resourcesNeeded">
                         <img alt='Workers' src={workerImage}></img>
-                        <span style={{ color: 'pink' }}>{currentLevelWorkersNeeded()}</span>
+                        <span style={{ color: workersColor }}>{currentLevelWorkersNeeded()}</span>
                     </div>
                 </>
             )
@@ -217,7 +172,7 @@ const ViewBuilding = props => {
                     </div>
                     <div className="resourcesNeeded">
                         <img alt='Workers' src={workerImage}></img>
-                        <span style={{ color: 'pink' }}>{currentLevelWorkersNeeded()}</span>
+                        <span style={{ color: workersColor }}>{currentLevelWorkersNeeded()}</span>
                     </div>
                 </>
             )

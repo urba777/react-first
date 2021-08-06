@@ -21,6 +21,7 @@ const Building = props => {
     const [goldColor, setGoldColor] = useState('white');
     const [stoneColor, setStoneColor] = useState('white');
     const [foodColor, setFoodColor] = useState('white');
+    const [workersColor, setWorkersColor] = useState('red');
 
     const buildButton = useRef(true);
 
@@ -57,7 +58,8 @@ const Building = props => {
         if (props.wood >= building.woodNeeded[building.level] &&
             props.gold >= building.goldNeeded[building.level] &&
             props.stone >= building.stoneNeeded[building.level] &&
-            props.food >= building.foodNeeded[building.level]) {
+            props.food >= building.foodNeeded[building.level] &&
+            props.workers >= building.workersNeeded[building.level]) {
             buildButton.current = true;
             setButtonColor('#768d87');
             setButtonBorder('#566963');
@@ -94,20 +96,19 @@ const Building = props => {
             setButtonBorder('#c0300b');
             buildButton.current = false;
         }
-    }, [props.gold, props.wood, props.food, props.stone]);
+        if (props.workers >= building.workersNeeded[building.level]) {
+            setWorkersColor('white');
+        } else if (props.workers < building.workersNeeded[building.level]) {
+            setWorkersColor('red');
+            setButtonColor('#c0392b');
+            setButtonBorder('#c0300b');
+            buildButton.current = false;
+        }
+    }, [props.gold, props.wood, props.food, props.stone, props.workers]);
 
     //this shows how much gold you need by the level
     const currentLevelGoldNeeded = () => {
-        if (building.shortName === 'gold') {
-            return building.goldNeeded[building.level];
-        }
-        if (building.shortName === 'wood') {
-            return building.goldNeeded[building.level];
-        }
-        if (building.shortName === 'stone') {
-            return building.goldNeeded[building.level];
-        }
-        if (building.shortName === 'food') {
+        if (building.shortName === 'gold' || building.shortName === 'wood' || building.shortName === 'stone' || building.shortName === 'food') {
             return building.goldNeeded[building.level];
         }
     }
@@ -150,24 +151,24 @@ const Building = props => {
         if (building.shortName === 'gold' && building.level !== 7) {
             return (
                 <>
-                    <div className="resource">
+                    <div title='Food needed' className="resource">
                         <img alt='Food needed' title='Food needed' src={foodImage}></img>
                         <span style={{ color: foodColor }}>{currentLevelFoodNeeded()}</span>
                         <div></div>
                     </div>
-                    <div className="resource">
+                    <div title='Stone needed' className="resource">
                         <img alt='Stone needed' title='Stone needed' src={stoneImage}></img>
                         <span style={{ color: stoneColor }}>{currentLevelStoneNeeded()}</span>
                         <div></div>
                     </div>
-                    <div className="resource">
+                    <div title='Wood needed' className="resource">
                         <img alt='Wood needed' title='Wood needed' src={woodImage}></img>
                         <span style={{ color: woodColor }}>{currentLevelWoodNeeded()}</span>
                         <div></div>
                     </div>
-                    <div alt='Workers needed' title='Workers needed' className="resource">
-                        <img src={workerImage}></img>
-                        <span>{currentLevelWorkersNeeded()}</span>
+                    <div title='Workers needed' className="resource">
+                        <img alt='Workers needed' src={workerImage}></img>
+                        <span style={{ color: workersColor }}>{currentLevelWorkersNeeded()}</span>
                         <div></div>
                     </div>
                 </>
@@ -176,24 +177,24 @@ const Building = props => {
         if (building.shortName === 'stone' && building.level !== 7) {
             return (
                 <>
-                    <div className="resource">
+                    <div title='Gold needed' className="resource">
                         <img alt='Gold needed' title='Gold needed' src={coinImage}></img>
                         <span style={{ color: goldColor }}>{currentLevelGoldNeeded()}</span>
                         <div></div>
                     </div>
-                    <div className="resource">
+                    <div title='Food needed' className="resource">
                         <img alt='Food needed' title='Food needed' src={foodImage}></img>
                         <span style={{ color: foodColor }}>{currentLevelFoodNeeded()}</span>
                         <div></div>
                     </div>
-                    <div className="resource">
+                    <div title='Wood needed' className="resource">
                         <img alt='Wood needed' title='Wood needed' src={woodImage}></img>
                         <span style={{ color: woodColor }}>{currentLevelWoodNeeded()}</span>
                         <div></div>
                     </div>
-                    <div className="resource">
+                    <div title='Workers needed' className="resource">
                         <img alt='Workers needed' title='Workers needed' src={workerImage}></img>
-                        <span>{currentLevelWorkersNeeded()}</span>
+                        <span style={{ color: workersColor }}>{currentLevelWorkersNeeded()}</span>
                         <div></div>
                     </div>
                 </>
@@ -202,24 +203,24 @@ const Building = props => {
         if (building.shortName === 'food' && building.level !== 7) {
             return (
                 <>
-                    <div className="resource">
-                        <img title='Gold needed' src={coinImage}></img>
+                    <div title='Gold needed' className="resource">
+                        <img alt='Gold needed' title='Gold needed' src={coinImage}></img>
                         <span style={{ color: goldColor }}>{currentLevelGoldNeeded()}</span>
                         <div></div>
                     </div>
-                    <div className="resource">
-                        <img title='Stone needed' src={stoneImage}></img>
+                    <div title='Stone needed' className="resource">
+                        <img alt='Stone needed' title='Stone needed' src={stoneImage}></img>
                         <span style={{ color: stoneColor }}>{currentLevelStoneNeeded()}</span>
                         <div></div>
                     </div>
-                    <div className="resource">
-                        <img title='Wood needed' src={woodImage}></img>
+                    <div title='Wood needed' className="resource">
+                        <img alt='Wood needed' title='Wood needed' src={woodImage}></img>
                         <span style={{ color: woodColor }}>{currentLevelWoodNeeded()}</span>
                         <div></div>
                     </div>
-                    <div className="resource">
+                    <div title='Workers needed' className="resource">
                         <img alt='Workers needed' title='Workers needed' src={workerImage}></img>
-                        <span>{currentLevelWorkersNeeded()}</span>
+                        <span style={{ color: workersColor }}>{currentLevelWorkersNeeded()}</span>
                         <div></div>
                     </div>
                 </>
@@ -228,24 +229,24 @@ const Building = props => {
         if (building.shortName === 'wood' && building.level !== 7) {
             return (
                 <>
-                    <div className="resource">
-                        <img title='Gold needed' src={coinImage}></img>
+                    <div title='Gold needed' className="resource">
+                        <img alt='Gold needed' title='Gold needed' src={coinImage}></img>
                         <span style={{ color: goldColor }}>{currentLevelGoldNeeded()}</span>
                         <div></div>
                     </div>
-                    <div className="resource">
-                        <img title='Food needed' src={foodImage}></img>
+                    <div title='Food needed' className="resource">
+                        <img alt='Food needed' title='Food needed' src={foodImage}></img>
                         <span style={{ color: foodColor }}>{currentLevelFoodNeeded()}</span>
                         <div></div>
                     </div>
-                    <div className="resource">
-                        <img title='Stone needed' src={stoneImage}></img>
+                    <div title='Stone needed' className="resource">
+                        <img alt='Stone needed' title='Stone needed' src={stoneImage}></img>
                         <span style={{ color: stoneColor }}>{currentLevelStoneNeeded()}</span>
                         <div></div>
                     </div>
-                    <div className="resource">
+                    <div title='Workers needed' className="resource">
                         <img alt='Workers needed' title='Workers needed' src={workerImage}></img>
-                        <span>{currentLevelWorkersNeeded()}</span>
+                        <span style={{ color: workersColor }}>{currentLevelWorkersNeeded()}</span>
                         <div></div>
                     </div>
                 </>
@@ -255,7 +256,7 @@ const Building = props => {
             return (
                 <>
                     {/* <img alt='Stone needed' title='Stone needed' src={stoneImage}></img> */}
-                    <h3 style={{ color: 'green' }}>This building has <br></br> a MAX level!</h3>
+                    <h3 style={{ color: 'green' }}>This building has <br></br> a <b>MAX</b> level!</h3>
                     <div></div>
                 </>
             )

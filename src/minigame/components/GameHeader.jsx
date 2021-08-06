@@ -10,17 +10,17 @@ const GameHeader = (props) => {
 
         <div className="topBoxes">
             <div className="resourcesBox">
-                <div className="resource">
+                <div title='Gold' className="resource">
                     <img alt='Gold' title='Gold' src={coinImage}></img>
                     <span>{props.gold}</span>
                     <div></div>
                 </div>
-                <div className="resource">
+                <div title='Food' className="resource">
                     <img alt='Food' title='Food' src={foodImage}></img>
                     <span>{props.food}</span>
                     <div></div>
                 </div>
-                <div className="resource">
+                <div title='Stone' className="resource">
                     <img alt='Stone' title='Stone' src={stoneImage}></img>
                     <span>{props.stone}</span>
                     <div></div>
@@ -39,7 +39,7 @@ const GameHeader = (props) => {
             <div className="xpBar">
                 <span className="level">LEVEL: {props.playerLevel}</span>
                 <div className="xpProgress">
-                    <div className="xpProgressMoving" style={{width: props.xpLevel+'%'}}>{props.xpLevel}</div>
+                    <div className="xpProgressMoving" style={{ width: props.xpLevel + '%' }}>{props.xpLevel}</div>
                 </div>
             </div>
         </div>

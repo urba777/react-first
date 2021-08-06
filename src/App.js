@@ -16,6 +16,12 @@ const App = () => {
   const [stone, setStone] = useState(300);
   const [workers, setWorkers] = useState(0);
 
+  const [workersFoodNeeded, setWorkersFoodNeeded] = useState(10);
+  const [workersGoldNeeded, setWorkersGoldNeeded] = useState(10);
+  const [workersStoneNeeded, setWorkersStoneNeeded] = useState(10);
+  const [workersTimberNeeded, setWorkersTimberNeeded] = useState(10);
+
+  //Buildings array dispatch
   const [buildings, dispatchBuildings] = useReducer(buildingReducer, allBuildings);
 
   //XP + LEVEL
@@ -107,6 +113,7 @@ const App = () => {
   }, [buildings]);
   //END OF RESOURCES STATES CHANGING////////////////////////////////////////
 
+  //resource cheat
   const setRess = () => {
     setGold(gold => gold + 500);
     setFood(food => food + 500);
@@ -122,13 +129,10 @@ const App = () => {
           food={food}
           wood={wood}
           stone={stone}
+          workers={workers}
           xpLevel={xpLevel}
           playerLevel={playerLevel}
-          workers={workers}
         />
-        {/* <Building name={'Gold factory'} gives={'1'} earnings={manorEarnings} sum={manors} price={10} money={money} buyAppartment={buildManor} makes={aboutManor} />
-          <Building name={'Medzio dirbtuves'} gives={'2'} earnings={parduotuvesEarnings} sum={parduotuves} price={15} money={money} buyAppartment={buyParduotuve} makes={aboutLumberMill} /> */}
-
       </header>
 
       <main>
@@ -143,11 +147,22 @@ const App = () => {
           setFood={setFood}
           setWood={setWood}
           setStone={setStone}
+          workers={workers}
           setWorkers={setWorkers}
+          workersFoodNeeded={workersFoodNeeded}
+          workersGoldNeeded={workersGoldNeeded}
+          workersStoneNeeded={workersStoneNeeded}
+          workersTimberNeeded={workersTimberNeeded}
+          setWorkersFoodNeeded={setWorkersFoodNeeded}
+          setWorkersGoldNeeded={setWorkersGoldNeeded}
+          setWorkersStoneNeeded={setWorkersStoneNeeded}
+          setWorkersTimberNeeded={setWorkersTimberNeeded}
         />
       </main>
 
-      <footer><button onClick={() => setRess()}>SET</button></footer>
+      <footer style={{ display: 'flex', justifyContent: 'center', marginTop: '100px', flexDirection: 'column' }} >
+        <button className='myButton' onClick={() => setRess()}>GET RESOURCES</button>
+      </footer>
     </div>
 
   );
